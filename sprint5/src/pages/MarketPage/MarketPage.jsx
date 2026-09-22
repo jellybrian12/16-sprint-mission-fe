@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SortDropdown from "../../components/SortDropdown/SortDropdown";
@@ -23,20 +24,22 @@ const MarketPage = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const bestData = await getProducts({
-          page: 1,
-          pageSize: bestPageSize,
-          orderBy: "favorite",
-        });
+        // const bestData = await getProducts({
+        //   page: 1,
+        //   pageSize: bestPageSize,
+        //   orderBy: "favorite",
+        // });
+
+        const offset = (pageNumber - 1) * productPageSize;
 
         const productData = await getProducts({
-          page: pageNumber,
-          pageSize: productPageSize,
+          offset,
+          limit: productPageSize,
           keyword,
-          orderBy,
+          // orderBy,
         });
 
-        setBestProducts(bestData.list);
+        // setBestProducts(bestData.list);
         setProducts(productData.list);
         setTotalCount(productData.totalCount);
       } catch (error) {
@@ -45,7 +48,7 @@ const MarketPage = () => {
     };
 
     loadProducts();
-  }, [pageNumber, productPageSize, keyword, orderBy]);
+  }, [pageNumber, productPageSize, keyword]);
 
 
 
@@ -66,7 +69,7 @@ const MarketPage = () => {
       <Header />
 
       <main className={styles.main}>
-        <section className={styles.bestSection}>
+        {/* <section className={styles.bestSection}>
           <h2 className={styles.sectionTitle}>베스트 상품</h2>
 
           <div className={styles.bestGrid}>
@@ -77,7 +80,7 @@ const MarketPage = () => {
               />
             ))}
           </div>
-        </section>
+        </section> */}
 
         <section className={styles.productSection}>
           <div className={styles.productToolbar}>
@@ -85,9 +88,12 @@ const MarketPage = () => {
               <h2 className={`${styles.sectionTitle} ${styles.productTitle}`}>
                 판매 중인 상품
               </h2>
-              <button className={styles.addButton}>
+              <Link
+                to="/registration"
+                className={styles.addButton}
+              >
                 상품 등록하기
-              </button>
+              </Link>
             </div>
             <div className={styles.toolbarBottom}>
 
@@ -103,6 +109,7 @@ const MarketPage = () => {
               {/* 정렬바 */}
               <SortDropdown
                 orderBy={orderBy}
+                setPageNumber={setPageNumber}
               />
 
             </div>

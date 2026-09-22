@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styles from "./Header.module.scss"
 import pcLogo from "../../assets/images/logo.png";
 import mobileLogo from "../../assets/images/ic_mobileLogo.png";
@@ -14,7 +15,14 @@ const Header = () => {
 
           <nav className={styles.nav}>
             <a href="#">자유게시판</a>
-            <a href="/">중고마켓</a>
+            <NavLink
+              to="/items"
+              className={({ isActive }) =>
+                isActive ? styles.active : ""
+              }
+            >
+              중고마켓
+            </NavLink>
           </nav>
         </div>
 

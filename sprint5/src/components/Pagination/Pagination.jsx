@@ -63,7 +63,7 @@ const Pagination = ({
       <button
         type="button"
         className={styles.arrowButton}
-        onClick={() => setPageNumber(pageNumber + 1)}
+        onClick={() => onPageChange(pageNumber + 1)}
         disabled={pageNumber === totalPages}
       >
         ›

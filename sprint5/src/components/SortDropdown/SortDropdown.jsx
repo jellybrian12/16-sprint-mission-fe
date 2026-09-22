@@ -5,6 +5,7 @@ import sortIcon from "../../assets/icons/ic_sort.png";
 
 const SortDropdown = ({
   orderBy,
+  setPageNumber
 }) => {
 
   const [isSortOpen, setIsSortOpen] = useState(false);
@@ -40,7 +41,7 @@ const SortDropdown = ({
           <button
             type="button"
             onClick={() => {
-              setOrderBy("recent");
+              // setOrderBy("recent");
               setPageNumber(1);
               setIsSortOpen(false);
             }}
@@ -48,16 +49,16 @@ const SortDropdown = ({
             최신순
           </button>
 
-          <button
+          {/* <button
             type="button"
             onClick={() => {
-              setOrderBy("favorite");
+              // setOrderBy("favorite");
               setPageNumber(1);
               setIsSortOpen(false);
             }}
           >
             좋아요순
-          </button>
+          </button> */}
         </div>
       )}
     </div>

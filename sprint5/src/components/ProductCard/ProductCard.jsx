@@ -1,10 +1,13 @@
 import styles from "./ProductCard.module.scss";
+import defaultProductImage from "../../assets/images/default-image.png"
+
 
 const ProductCard = ({ product }) => {
   return (
     <article className={styles.card}>
       <div className={styles.imageBox}>
-        <img   src={product.images?.[0]} alt={product.name} />
+        {/* <img   src={product.images?.[0]} alt={product.name} /> */}
+        <img src={defaultProductImage} alt={product.name} />
       </div>
 
       <div className={styles.info}>
@@ -16,7 +19,8 @@ const ProductCard = ({ product }) => {
 
         <div className={styles.favorite}>
           <span>♡</span>
-          <span>{product.favoriteCount}</span>
+          {/* <span>{product.favoriteCount}</span> */}
+          <span>240</span>
         </div>
       </div>
     </article>

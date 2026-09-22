@@ -48,6 +48,9 @@
       color: $gray-600;
       text-decoration: none;
     }
+    .active {
+      color: $primary;
+    }
   }
 
   .loginButton {
