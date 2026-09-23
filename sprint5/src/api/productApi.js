@@ -5,7 +5,7 @@ const BASE_URL = 'https://panda-market-jnwj.onrender.com';
 export const getProducts = async ({
   offset = 0,
   limit = 10,
-  keyword = '',
+  keyword = '',ㄴ
 }) => {
   const query = new URLSearchParams({
     offset,
